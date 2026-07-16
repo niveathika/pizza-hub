@@ -1,0 +1,9 @@
+[package]
+org = "devantdemos"
+name = "order_service"
+version = "0.1.0"
+distribution = "2201.13.4"
+title = "order-service"
+
+[build-options]
+sticky = true

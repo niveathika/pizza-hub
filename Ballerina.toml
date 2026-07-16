@@ -1,0 +1,3 @@
+[workspace]
+title = "TCS"
+packages = ["order_service"]
