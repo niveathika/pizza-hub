@@ -7,3 +7,8 @@ title = "order-service"
 
 [build-options]
 sticky = true
+
+[[tool.openapi]]
+id = "delivaryservice"
+targetModule = "delivaryservice"
+filePath = ".wso2/delivaryservice-spec.yaml"

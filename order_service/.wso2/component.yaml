@@ -1,0 +1,5 @@
+schemaVersion: '1.2'
+dependencies:
+  connectionReferences:
+    - name: delivaryService
+      resourceRef: service:/tcs-additional/delivaryservice/v1/316d8/ORGANIZATION

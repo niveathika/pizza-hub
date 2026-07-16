@@ -21,3 +21,14 @@ public type OrderResponse record {|
     string deliveryPartner;
     int deliveryEtaMinutes;
 |};
+
+public type KitchenRequest record {|
+    Item[] items;
+    string orderId;
+|};
+
+public type KitchenResponse record {|
+    string orderId;
+    string status;
+    int etaMinutes;
+|};
