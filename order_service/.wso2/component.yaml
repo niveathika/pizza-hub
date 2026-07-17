@@ -4,7 +4,7 @@ endpoints:
   # This name will be used when generating the managed API
   - name: pizza-api
     # +optional Display name for the endpoint.
-    displayName: Go Greeter Sample
+    displayName: Pizza API
     # +required Service section has the user service endpoint details
     service:
       # +optional Context (base path) of the API that gets exposed via the endpoint.
