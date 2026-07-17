@@ -1,0 +1,127 @@
+openapi: 3.0.1
+info:
+  title: Pizza
+  version: 0.1.0
+servers:
+- url: "http://{server}:{port}/pizza"
+  variables:
+    server:
+      default: localhost
+    port:
+      default: "9090"
+paths:
+  /orders:
+    post:
+      operationId: postOrders
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/OrderRequest"
+        required: true
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OrderResponse"
+        "400":
+          description: BadRequest
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorPayload"
+        "500":
+          description: InternalServerError
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorPayload"
+components:
+  schemas:
+    ErrorPayload:
+      required:
+      - message
+      - method
+      - path
+      - reason
+      - status
+      - timestamp
+      type: object
+      properties:
+        timestamp:
+          type: string
+        status:
+          type: integer
+          format: int64
+        reason:
+          type: string
+        message:
+          type: string
+        path:
+          type: string
+        method:
+          type: string
+    Item:
+      required:
+      - pizza
+      - quantity
+      - size
+      type: object
+      properties:
+        pizza:
+          type: string
+        size:
+          type: string
+        quantity:
+          type: integer
+          format: int64
+      additionalProperties: false
+    OrderRequest:
+      required:
+      - address
+      - customerId
+      - customerName
+      - email
+      - items
+      - phone
+      type: object
+      properties:
+        customerId:
+          type: string
+        customerName:
+          type: string
+        phone:
+          type: string
+        address:
+          type: string
+        email:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/Item"
+      additionalProperties: false
+    OrderResponse:
+      required:
+      - deliveryEtaMinutes
+      - deliveryPartner
+      - estimatedReadyTime
+      - orderId
+      - status
+      type: object
+      properties:
+        orderId:
+          type: string
+        status:
+          type: string
+        estimatedReadyTime:
+          type: integer
+          format: int64
+        deliveryPartner:
+          type: string
+        deliveryEtaMinutes:
+          type: integer
+          format: int64
+      additionalProperties: false
